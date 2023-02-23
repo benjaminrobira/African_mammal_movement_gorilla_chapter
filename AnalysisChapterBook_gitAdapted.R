@@ -486,7 +486,7 @@ rediscretisedData <- rediscretisedData %>%
 
 
 library(amt)
-crs = CRS(paste("+proj=utm","+zone=33","+ellps=WGS84", "+datum=WGS84", "+units=m", "+towgs84:0,0,0", sep = " ")))
+crs = CRS(paste("+proj=utm","+zone=33","+ellps=WGS84", "+datum=WGS84", "+units=m", "+towgs84:0,0,0", sep = " "))
 
 ## Extract movement metrics
 
@@ -1337,7 +1337,7 @@ mcpGroups <- lapply(sort(unique(trk_rediscretized_bygroup_unnest$group)), functi
 )
 # options(error=recover)
 uniqueValues <- unique(trk_rediscretized_bygroup_unnest$id)
-
+set.seed(1)#Seed for reproducibility
 listComparisonEfficiency <- lapply(unique(trk_rediscretized_bygroup_unnest$id), function(x){
   print(which(uniqueValues == x))
   dataToWork <- trk_rediscretized_bygroup_unnest %>% 

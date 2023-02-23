@@ -491,6 +491,8 @@ crs = CRS(paste("+proj=utm","+zone=33","+ellps=WGS84", "+datum=WGS84", "+units=m
 ## Extract movement metrics
 
 ### Group data
+trk <- rediscretisedData %>% make_track(Longitude, Latitude, Datetime, id = Date_group, Group = Group, 
+                                       crs = CRS(paste("+proj=utm","+zone=33","+ellps=WGS84", "+datum=WGS84", "+units=m", "+towgs84:0,0,0", sep=" ")))
 trk_grouped <- trk %>% nest(data = -"id")
 
 #Rediscretize data at constant time step and calculate movement var (speed, heading angle and step length)
